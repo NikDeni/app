@@ -43,6 +43,7 @@ class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField()
     password2 = forms.CharField()
 
+
 class ProfileForm(UserChangeForm):
     class Meta:
         model = User
