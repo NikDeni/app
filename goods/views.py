@@ -1,6 +1,6 @@
 from unicodedata import category
 from django.core.paginator import Paginator
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import redirect, render
 
 from goods.models import Products
 from goods.utils import q_search
@@ -18,7 +18,7 @@ def catalog(request, category_slug=None):
     elif query:
         goods = q_search(query)
     else:
-        goods = get_list_or_404(Products.objects.filter(category__slug=category_slug))
+        goods = Products.objects.filter(category__slug=category_slug)
 
     if on_sale:
         goods = goods.filter(discount__gt=0)
@@ -26,6 +26,9 @@ def catalog(request, category_slug=None):
     if order_by and order_by != "default":
         goods = goods.order_by(order_by)
 
+    if not goods:
+        return redirect("main:not_found")
+    
     paginator = Paginator(goods, 3)
     current_page = paginator.page(int(page))
 

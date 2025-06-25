@@ -1,0 +1,26 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>404 — Страница не найдена</title>
+        <link rel="stylesheet" href={% static "deps/css/bootstrap/bootstrap.min.css"%}>
+        <link rel="stylesheet" href={% static "deps/css/my_css.css" %}>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div class="not-found error-container">
+            <img src="{% static "deps/favicon/404.png" %}" alt="404" class="error-image">
+            <h1 class="display-4 text-light">404 — Страница не найдена</h1>
+            <p class="lead text-secondary">Возможно, вы попали не туда. Эта страница не существует или была удалена.</p>
+            <a href="/" class="btn btn-primary mt-3">Вернуться на главную</a>
+        </div>
+
+        <script src={% static "deps/js/jquery/jquery-3.7.0.min.js"%}></script>
+        <script src={% static "deps/js/jquery-ajax.js"%}></script>
+        <script src={% static "deps/js/bootstrap/bootstrap.bundle.min.js"%}></script>
+    </body>
+</html>

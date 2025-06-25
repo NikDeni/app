@@ -23,3 +23,7 @@ def about(request):
 
     return render(request, 'main/about.html', context)
 
+def not_found(request):
+
+    return render(request, '404.html')
+
